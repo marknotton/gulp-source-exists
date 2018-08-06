@@ -1,0 +1,28 @@
+{
+  "name": "gulp-source-exists",
+  "version": "1.0.0",
+  "description": "Report back if any files are not found in the src glob.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marknotton/gulp-source-exists.git"
+  },
+  "dependencies": {
+    "fancy-log": "^1.3.2",
+    "chalk": "^2.3.1",
+    "through2":"^2.0.3"
+  },
+  "keywords": [
+    "gulp",
+    ".env"
+  ],
+  "author": "Mark Notton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marknotton/gulp-source-exists/issues"
+  },
+  "homepage": "https://github.com/marknotton/gulp-source-exists"
+}
