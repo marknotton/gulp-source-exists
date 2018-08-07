@@ -1,6 +1,6 @@
 {
   "name": "gulp-source-exists",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Report back if any files are not found in the src glob.",
   "main": "index.js",
   "scripts": {
