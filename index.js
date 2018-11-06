@@ -7,7 +7,7 @@ const through2 = require('through2'),
       log      = require('fancy-log'),
       chalk    = require('chalk');
 
-module.exports = (files, fail = false) => {
+module.exports = (files, fail = false, callback) => {
 
   let filepaths = files.filter(file => !file.includes('*') && !file.includes('!'))
   let missing = filepaths.filter(file => fileExists(path.resolve(process.cwd(), file)) !== true);
@@ -17,7 +17,15 @@ module.exports = (files, fail = false) => {
       if (fail) {
         throw Error("The following file from your src stream doesn't exist: " +  missing)
       }
-      log(`${chalk.red("Missing file:")} ${chalk.red('Could not find '+file)}`);
+
+			let message = `${chalk.red("Missing file:")} ${chalk.red('Could not find '+file)}`;
+
+			if ( typeof callback !== 'undefined') {
+				callback(message);
+			} else {
+      	log(message);
+			}
+
     })
   }
 
