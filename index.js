@@ -4,7 +4,7 @@
 const through2 = require('through2'),
       fs       = require('fs'),
       path     = require('path'),
-      log      = require('fancy-log'),
+      log      = require('loggerer'),
       chalk    = require('chalk');
 
 module.exports = (files, callback = false) => {
@@ -15,14 +15,12 @@ module.exports = (files, callback = false) => {
   if (missing.length) {
     missing.forEach(file => {
 
-			let message = `${chalk.red("Missing:")} ${chalk.red('Could not find '+file)}`;
-
       if (callback == true) {
-        throw Error(message)
+        throw Error('Missing: Could not find ' + file)
       } else if ( typeof callback == 'function') {
-				callback(`[${(new Date()).toTimeString().substr(0,8)}] ${message}`);
+				callback(['Missing:', file, 'Could not find this file', ['red', 'red', 'red']]);
 			} else {
-      	log(message);
+      	log('Missing:', file, 'Could not find this file', ['red', 'red', 'red']);
 			}
 
     })
