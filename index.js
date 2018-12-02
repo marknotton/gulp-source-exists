@@ -1,11 +1,9 @@
 'use strict'
 
 // Dependencies
-const through2 = require('through2'),
-      fs       = require('fs'),
+const fs       = require('fs'),
       path     = require('path'),
-      log      = require('loggerer'),
-      chalk    = require('chalk');
+      log      = require('@marknotton/lumberjack');
 
 module.exports = (files, callback = false) => {
 
@@ -18,18 +16,13 @@ module.exports = (files, callback = false) => {
       if (callback == true) {
         throw Error('Missing: Could not find ' + file)
       } else if ( typeof callback == 'function') {
-				callback(['Missing:', file, 'Could not find this file', ['red', 'red', 'red']]);
+				callback(['Missing:', file, 'Could not find this file']);
 			} else {
       	log('Missing:', file, 'Could not find this file', ['red', 'red', 'red']);
 			}
 
     })
   }
-
-  return through2.obj(function (chunk, enc, callback) {
-    this.push(chunk)
-    callback()
-  })
 };
 
 function fileExists(filePath) {
